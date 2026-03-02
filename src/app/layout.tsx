@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 
 import { ColorSchemeScript, mantineHtmlProps } from '@mantine/core';
 
+import { inter } from './config/fonts';
 import './index.css';
 import { QueryProvider } from './providers/query-client';
 import { ThemeProvider } from './providers/theme-provider';
@@ -19,7 +20,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
       <head>
         <ColorSchemeScript defaultColorScheme="light" />
       </head>
-      <body>
+      <body className={inter.className}>
         <QueryProvider>
           <ThemeProvider>{children}</ThemeProvider>
         </QueryProvider>
