@@ -1,7 +1,9 @@
+'use client';
+
 import { useRouter } from 'next/navigation';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button, Checkbox, PasswordInput, Stack, TextInput } from '@mantine/core';
+import { Button, PasswordInput, Stack, TextInput } from '@mantine/core';
 import { useForm } from 'react-hook-form';
 
 import { TLoginSchema } from '@/entities/auth';

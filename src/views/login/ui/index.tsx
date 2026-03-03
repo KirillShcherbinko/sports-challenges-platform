@@ -1,15 +1,18 @@
-import { Divider, Paper, Text, Title } from '@mantine/core';
+import { Divider, Stack, Text, Title } from '@mantine/core';
 
 import { LoginForm } from '@/features/login-form';
+import { GoogleAuthButton } from '@/features/google-auth-button';
 
 export const LoginPage = () => {
   return (
-    <Paper radius="md" p="lg" withBorder>
+    <Stack>
       <Title component="h1">Войдите в аккаунт</Title>
 
       <Text size="lg" fw={500} c="bright">
         Заполните поля снизу для входа
       </Text>
+
+      <GoogleAuthButton/>
 
       <Divider
         label="Или"
@@ -19,6 +22,6 @@ export const LoginPage = () => {
       />
 
       <LoginForm />
-    </Paper>
+    </Stack>
   );
 };

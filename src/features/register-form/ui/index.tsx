@@ -1,3 +1,5 @@
+'use client';
+
 import { useRouter } from 'next/navigation';
 
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -8,15 +10,17 @@ import { TRegisterSchema } from '@/entities/auth';
 
 import { REGISTER_DATA } from '../config/register-data';
 
-export const RegisterSchema = () => {
+export const RegisterForm = () => {
   const router = useRouter();
 
   const { schema, defaultValues, fields } = REGISTER_DATA;
 
-  const { formState, handleSubmit, register } = useForm<TRegisterSchema>({
+  const { formState, handleSubmit, register, watch } = useForm<TRegisterSchema>({
     resolver: zodResolver(schema),
     defaultValues,
   });
+
+  const agreeToTerms = watch('agreeToTerms');
 
   const onSubmit = (formValues: TRegisterSchema) => {
     console.log(formValues);
@@ -45,7 +49,7 @@ export const RegisterSchema = () => {
           {...fields['agreeToTerms']}
           {...register('agreeToTerms')}
         />
-        <Button type="submit">Войти</Button>
+        <Button type="submit" disabled={!agreeToTerms}>Зарегистрирвоаться</Button>
       </Stack>
     </form>
   );
